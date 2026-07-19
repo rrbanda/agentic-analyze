@@ -8,6 +8,7 @@ repo_url: https://github.com/rrbanda/agentic-analyze
 
 theme:
   name: material
+  custom_dir: docs/overrides
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
