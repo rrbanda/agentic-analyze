@@ -9,45 +9,47 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root{--pur:#A78BFA;--purd:#7C3AED;--purdd:#5B21B6;--nav:#0F172A;--sky:#38BDF8;--gr:#94A3B8;--grl:#CBD5E1;--lt:rgba(255,255,255,.06);--grn:#34D399;--org:#FBBF24;--red:#FB7185;--rose:#F43F5E;--bg:#0B0F1A;--card:rgba(255,255,255,.04);--border:rgba(255,255,255,.08)}
+        :root{--pur:#A78BFA;--purd:#7C3AED;--purdd:#5B21B6;--nav:#0F172A;--sky:#38BDF8;--gr:#94A3B8;--grl:#CBD5E1;--lt:rgba(255,255,255,.06);--grn:#34D399;--org:#FBBF24;--red:#FB7185;--rose:#F43F5E;--bg:#0B0F1A;--card:rgba(255,255,255,.05);--border:rgba(255,255,255,.1)}
         .reveal{font-family:'Inter',system-ui,sans-serif;color:#E2E8F0}
         .reveal .slides>section,.reveal .slides>section>section{background:var(--bg)}
         .reveal h1,.reveal h2,.reveal h3{color:#F8FAFC;font-weight:700;text-transform:none;letter-spacing:-.03em}
-        .reveal h2{font-size:1.6em;margin-bottom:.15em}
-        .reveal h3{font-size:.75em;color:var(--pur);margin-top:0;font-weight:500}
-        .reveal p,.reveal li,.reveal td,.reveal th{color:var(--gr);font-size:.55em;line-height:1.5}
-        .reveal th{color:var(--grl);font-weight:600;font-size:.52em}
-        .reveal section{padding:30px 50px;box-sizing:border-box;height:100%}
-        .reveal .slide-number{color:var(--gr);font-size:8px;background:transparent}
-        .reveal code{font-size:.82em;background:rgba(139,92,246,.15);padding:1px 4px;border-radius:3px;color:var(--pur);font-family:'SF Mono',Consolas,monospace}
+        .reveal h2{font-size:1.4em;margin-bottom:.1em}
+        .reveal h3{font-size:.7em;color:var(--pur);margin-top:0;margin-bottom:.3em;font-weight:500}
+        .reveal p,.reveal li,.reveal td,.reveal th{color:var(--gr);font-size:.52em;line-height:1.45}
+        .reveal th{color:var(--grl);font-weight:600;font-size:.50em}
+        .reveal section{padding:18px 40px 14px;display:flex!important;flex-direction:column}
+        .reveal .slide-number{color:var(--gr);font-size:10px;background:transparent}
+        .reveal code{font-size:.85em;background:rgba(139,92,246,.15);padding:1px 5px;border-radius:3px;color:var(--pur);font-family:'SF Mono',Consolas,monospace}
         .top-bar{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purdd),var(--purd),var(--sky));z-index:10}
-        .reveal .controls{color:var(--pur)}.reveal .progress{color:var(--purd);height:2px}
-        .reveal table{border-collapse:collapse;width:100%;margin:8px 0}
-        .reveal table th,.reveal table td{border:1px solid var(--border);padding:6px 10px;text-align:left}
-        .reveal table th{background:rgba(139,92,246,.08)}
+        .reveal .controls{color:var(--pur)}.reveal .progress{color:var(--purd);height:3px}
+        .reveal table{border-collapse:collapse;width:100%;margin:6px 0}
+        .reveal table th,.reveal table td{border:1px solid var(--border);padding:5px 10px;text-align:left}
+        .reveal table th{background:rgba(139,92,246,.1)}
         .reveal table tr:nth-child(even){background:rgba(255,255,255,.02)}
-        .reveal table tr:hover{background:rgba(139,92,246,.05)}
-        .stat-row{display:flex;justify-content:center;gap:14px;margin:12px 0;flex-wrap:wrap}
-        .stat-box{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--purd);padding:8px 18px;border-radius:8px;text-align:center;min-width:110px;backdrop-filter:blur(8px)}
-        .stat-box .num{font-size:1.5em;font-weight:800;background:linear-gradient(135deg,var(--pur),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1.2}
-        .stat-box .lbl{font-size:.42em;color:var(--gr);font-weight:500}
-        .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-        .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-        .card{background:var(--card);border:1px solid var(--border);border-top:2px solid var(--purd);padding:10px 14px;border-radius:8px;text-align:left;backdrop-filter:blur(8px)}
-        .card h4{color:#F1F5F9;font-size:.58em;margin:0 0 5px 0;font-weight:700}
-        .card p,.card ul{font-size:.48em;margin:0;line-height:1.4;color:var(--gr)}
+        .reveal table tr:hover{background:rgba(139,92,246,.06)}
+        .stat-row{display:flex;justify-content:center;gap:12px;margin:10px 0;flex-wrap:wrap}
+        .stat-box{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--purd);padding:10px 20px;border-radius:8px;text-align:center;min-width:120px;backdrop-filter:blur(8px)}
+        .stat-box .num{font-size:1.6em;font-weight:800;background:linear-gradient(135deg,var(--pur),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1.2}
+        .stat-box .lbl{font-size:.40em;color:var(--gr);font-weight:500}
+        .two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;align-content:stretch}
+        .two-col>*{min-height:0}
+        .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;flex:1;align-content:start}
+        .three-col>*{min-height:0}
+        .card{background:var(--card);border:1px solid var(--border);border-top:2px solid var(--purd);padding:12px 16px;border-radius:8px;text-align:left;backdrop-filter:blur(8px);display:flex;flex-direction:column}
+        .card h4{color:#F1F5F9;font-size:.56em;margin:0 0 6px 0;font-weight:700}
+        .card p,.card ul{font-size:.46em;margin:0;line-height:1.45;color:var(--gr);flex:1}
         .card ul{padding-left:14px}
         .card-grn{border-top-color:var(--grn)}.card-red{border-top-color:var(--red)}.card-org{border-top-color:var(--org)}.card-sky{border-top-color:var(--sky)}
-        .tag{display:inline-block;background:rgba(139,92,246,.15);color:var(--pur);padding:1px 5px;border-radius:3px;font-size:.82em;font-weight:600}
+        .tag{display:inline-block;background:rgba(139,92,246,.15);color:var(--pur);padding:1px 6px;border-radius:3px;font-size:.85em;font-weight:600}
         .hl{color:var(--pur);font-weight:600}.hlr{color:var(--red);font-weight:600}.hlg{color:var(--grn);font-weight:600}
-        .gc{background:rgba(251,113,133,.15);color:var(--red);padding:1px 5px;border-radius:3px;font-weight:600;font-size:.9em}
-        .gs{background:rgba(251,191,36,.12);color:var(--org);padding:1px 5px;border-radius:3px;font-weight:600;font-size:.9em}
-        .gm{background:rgba(56,189,248,.12);color:var(--sky);padding:1px 5px;border-radius:3px;font-weight:600;font-size:.9em}
-        .ga{background:rgba(52,211,153,.12);color:var(--grn);padding:1px 5px;border-radius:3px;font-weight:600;font-size:.9em}
-        .gn{background:rgba(167,139,250,.15);color:var(--pur);padding:1px 5px;border-radius:3px;font-weight:600;font-size:.9em}
-        .sd{background:linear-gradient(135deg,#0B0F1A 0%,#1a103a 50%,#0B0F1A 100%)!important}
-        .sd h2{color:white!important;font-size:1.5em!important}.sd h3{color:var(--sky)!important;font-size:.75em!important}
-        .reveal .slides>section.title-slide{background:radial-gradient(ellipse at 30% 20%,rgba(124,58,237,.15) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.1) 0%,transparent 50%),var(--bg)}
+        .gc{background:rgba(251,113,133,.15);color:var(--red);padding:2px 7px;border-radius:4px;font-weight:600;font-size:.88em}
+        .gs{background:rgba(251,191,36,.12);color:var(--org);padding:2px 7px;border-radius:4px;font-weight:600;font-size:.88em}
+        .gm{background:rgba(56,189,248,.12);color:var(--sky);padding:2px 7px;border-radius:4px;font-weight:600;font-size:.88em}
+        .ga{background:rgba(52,211,153,.12);color:var(--grn);padding:2px 7px;border-radius:4px;font-weight:600;font-size:.88em}
+        .gn{background:rgba(167,139,250,.15);color:var(--pur);padding:2px 7px;border-radius:4px;font-weight:600;font-size:.88em}
+        .sd{background:linear-gradient(135deg,#0B0F1A 0%,#1a103a 50%,#0B0F1A 100%)!important;justify-content:center!important;align-items:center!important}
+        .sd h2{color:white!important;font-size:1.8em!important}.sd h3{color:var(--sky)!important;font-size:.8em!important}
+        .reveal .slides>section.title-slide{background:radial-gradient(ellipse at 30% 20%,rgba(124,58,237,.15) 0%,transparent 50%),radial-gradient(ellipse at 70% 80%,rgba(56,189,248,.1) 0%,transparent 50%),var(--bg);justify-content:center!important;align-items:center!important}
         #auth-wall{display:none;position:fixed;inset:0;z-index:9999;background:radial-gradient(ellipse at 50% 30%,rgba(124,58,237,.12) 0%,#0B0F1A 70%);font-family:'Inter',system-ui,sans-serif}
         #auth-wall .bx{max-width:340px;margin:14vh auto;padding:2rem;background:rgba(30,41,59,.85);border:1px solid rgba(255,255,255,.08);border-radius:16px;box-shadow:0 24px 48px rgba(0,0,0,.5);backdrop-filter:blur(20px)}
         #auth-wall h2{color:#F1F5F9;margin:.5rem 0 .2rem;font-size:1.3rem}
@@ -79,7 +81,7 @@
 <!-- TITLE -->
 <section class="title-slide">
 <div class="top-bar"></div>
-<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh">
+<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1">
     <div style="width:70px;height:70px;border-radius:16px;background:linear-gradient(135deg,var(--purd),var(--sky));display:flex;align-items:center;justify-content:center;margin-bottom:14px;box-shadow:0 8px 24px rgba(124,58,237,.3)">
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
     </div>
@@ -329,7 +331,7 @@
 <section>
 <div class="top-bar"></div>
 <h2>The Bottom Line</h2>
-<div style="text-align:center;max-width:85%;margin:0 auto">
+<div style="text-align:center;max-width:90%;margin:auto;flex:1;display:flex;flex-direction:column;justify-content:center">
     <p style="font-size:.50em;line-height:1.6;color:var(--grl)">Lyzr has built a <strong style="color:var(--red)">production-ready agent control plane</strong> that sits above our infrastructure layer.<br>They own the customer conversation about agents. We own the infrastructure conversation.</p>
     <p style="font-size:.50em;line-height:1.6;margin-top:8px;color:var(--grl)">Red Hat AI 3.x is <strong style="color:var(--grn)">building the right capabilities</strong> (OpenShell, AgentOps, EvalHub), but they are <strong style="color:var(--org)">not yet GA</strong>.<br>Lyzr's Control Plane is GA with 500+ customers. The gap is real but closable.</p>
     <div style="margin:14px auto;padding:12px 20px;border-radius:10px;background:linear-gradient(135deg,rgba(124,58,237,.12),rgba(56,189,248,.08));border:1px solid rgba(139,92,246,.2);max-width:90%">
@@ -348,7 +350,7 @@
     async function sha(m){var b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(m));return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("")}
     var K="aa_auth",w=document.getElementById("auth-wall"),d=document.getElementById("deck");
     function lock(){w.style.display="block";d.style.display="none"}
-    function unlock(){w.style.display="none";d.style.display="block";Reveal.initialize({hash:true,slideNumber:true,controls:true,progress:true,center:false,transition:'slide',width:'100%',height:'100%',margin:0,minScale:1,maxScale:1})}
+    function unlock(){w.style.display="none";d.style.display="block";Reveal.initialize({hash:true,slideNumber:true,controls:true,progress:true,center:false,transition:'slide',width:1440,height:810,margin:0.02,minScale:0.5,maxScale:2.0})}
     if(sessionStorage.getItem(K)==="1"){unlock()}else{lock()}
     document.getElementById("auth-form").addEventListener("submit",async function(e){e.preventDefault();var u=document.getElementById("auth-user").value,p=document.getElementById("auth-pass").value;var h=await sha(u+":"+p);if(V.has(h)){sessionStorage.setItem(K,"1");unlock()}else{document.getElementById("auth-error").style.display="block";document.getElementById("auth-pass").value=""}})
 })();
