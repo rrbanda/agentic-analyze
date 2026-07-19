@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI Competitive Intelligence</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+    <style>
+        :root {
+            --purple: #7C3AED;
+            --purple-dark: #5B21B6;
+            --navy: #0F172A;
+            --sky: #38BDF8;
+            --gray: #475569;
+            --light: #F1F5F9;
+            --green: #10B981;
+            --orange: #F59E0B;
+            --red: #EF4444;
+            --rose: #F43F5E;
+        }
+        .reveal { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        .reveal h1, .reveal h2, .reveal h3 { color: var(--navy); font-weight: 700; text-transform: none; letter-spacing: -0.02em; }
+        .reveal h2 { font-size: 1.3em; margin-bottom: 0.15em; }
+        .reveal h3 { font-size: 0.78em; color: var(--purple); margin-top: 0; }
+        .reveal p, .reveal li, .reveal td, .reveal th { color: var(--gray); font-size: 0.52em; line-height: 1.5; }
+        .reveal th { color: var(--navy); font-weight: 600; font-size: 0.50em; }
+        .reveal section { padding: 15px 25px; }
+        .reveal .slide-number { color: var(--navy); font-size: 10px; }
+        .reveal code { font-size: 0.82em; background: var(--light); padding: 1px 4px; border-radius: 2px; color: var(--navy); font-family: "SF Mono", Consolas, monospace; }
+        .top-bar { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--purple-dark), var(--purple), var(--sky)); }
+        .reveal .controls { color: var(--purple); }
+        .reveal .progress { color: var(--purple); height: 3px; }
+        .reveal table { border-collapse: collapse; width: 100%; margin: 6px 0; }
+        .reveal table th, .reveal table td { border: 1px solid #E2E8F0; padding: 4px 8px; text-align: left; }
+        .reveal table th { background: var(--light); }
+        .reveal table tr:nth-child(even) { background: #FAFAFA; }
+        .stat-row { display: flex; justify-content: center; gap: 12px; margin: 8px 0; flex-wrap: wrap; }
+        .stat-box { background: var(--light); border-left: 3px solid var(--purple); padding: 6px 14px; border-radius: 3px; text-align: center; min-width: 100px; }
+        .stat-box .num { font-size: 1.4em; font-weight: 700; color: var(--navy); display: block; line-height: 1.2; }
+        .stat-box .lbl { font-size: 0.44em; color: var(--gray); }
+        .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .card { border: 1px solid #E2E8F0; border-top: 2px solid var(--purple); padding: 8px 10px; border-radius: 4px; text-align: left; }
+        .card h4 { color: var(--navy); font-size: 0.56em; margin: 0 0 3px 0; }
+        .card p { font-size: 0.44em; margin: 0; line-height: 1.4; }
+        .card-green { border-top-color: var(--green); }
+        .card-red { border-top-color: var(--red); }
+        .card-orange { border-top-color: var(--orange); }
+        .card-sky { border-top-color: var(--sky); }
+        .impact-row { display: flex; gap: 10px; margin: 8px 0; }
+        .impact-card { flex: 1; background: var(--light); padding: 10px; border-radius: 4px; text-align: center; }
+        .impact-card .val { font-size: 1.3em; font-weight: 700; color: var(--navy); display: block; }
+        .impact-card .desc { font-size: 0.44em; color: var(--gray); }
+        .tag { display: inline-block; background: var(--light); color: var(--navy); padding: 1px 6px; border-radius: 2px; font-size: 0.82em; font-weight: 600; }
+        .tag-purple { background: #EDE9FE; color: var(--purple-dark); }
+        .tag-red { background: #FEE2E2; color: #991B1B; }
+        .tag-green { background: #D1FAE5; color: #065F46; }
+        .tag-orange { background: #FEF3C7; color: #92400E; }
+        .hl { color: var(--purple); font-weight: 600; }
+        .hl-red { color: var(--red); font-weight: 600; }
+        .hl-green { color: var(--green); font-weight: 600; }
+        .gap-crit { background: #FEE2E2; color: #991B1B; padding: 1px 5px; border-radius: 2px; font-weight: 600; font-size: 0.9em; }
+        .gap-sig { background: #FEF3C7; color: #92400E; padding: 1px 5px; border-radius: 2px; font-weight: 600; font-size: 0.9em; }
+        .gap-mod { background: #DBEAFE; color: #1E40AF; padding: 1px 5px; border-radius: 2px; font-weight: 600; font-size: 0.9em; }
+        .ahead { background: #D1FAE5; color: #065F46; padding: 1px 5px; border-radius: 2px; font-weight: 600; font-size: 0.9em; }
+        .section-divider { background: linear-gradient(135deg, var(--navy), #1E293B) !important; }
+        .section-divider h2, .section-divider h3, .section-divider p { color: white !important; }
+        .section-divider h3 { color: var(--sky) !important; }
+
+        /* AUTH WALL */
+        #auth-wall { display:none; position:fixed; inset:0; z-index:9999; background:#0F172A; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; }
+        #auth-wall .box { max-width:360px; margin:14vh auto; padding:2.5rem; background:#1E293B; border-radius:12px; box-shadow:0 8px 32px rgba(0,0,0,.4); }
+        #auth-wall h2 { color:#E2E8F0; margin:.75rem 0 .25rem; font-size:1.4rem; }
+        #auth-wall p { color:#94A3B8; font-size:.85rem; margin:0; }
+        #auth-wall label { display:block; color:#CBD5E1; font-size:.8rem; font-weight:600; margin-bottom:.35rem; }
+        #auth-wall input { width:100%; padding:.6rem .75rem; margin-bottom:.85rem; border:1px solid #334155; border-radius:8px; background:#0F172A; color:#E2E8F0; font-size:.95rem; box-sizing:border-box; outline:none; }
+        #auth-wall input:focus { border-color: var(--purple); }
+        #auth-wall button { width:100%; padding:.7rem; background:var(--purple); color:#fff; border:none; border-radius:8px; font-size:.95rem; font-weight:600; cursor:pointer; }
+        #auth-wall button:hover { background: var(--purple-dark); }
+        #auth-error { display:none; color:#F87171; font-size:.8rem; margin-bottom:.75rem; text-align:center; }
+    </style>
+</head>
+<body>
+
+<!-- AUTH WALL -->
+<div id="auth-wall">
+    <div class="box">
+        <div style="text-align:center; margin-bottom:1.5rem;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <h2>Restricted Access</h2>
+            <p>Enter credentials to continue</p>
+        </div>
+        <form id="auth-form" autocomplete="off">
+            <label>Username</label>
+            <input id="auth-user" type="text" autocomplete="username" required>
+            <label>Password</label>
+            <input id="auth-pass" type="password" autocomplete="current-password" required>
+            <div id="auth-error">Invalid credentials. Try again.</div>
+            <button type="submit">Sign In</button>
+        </form>
+        <p style="text-align:center; color:#475569; font-size:.75rem; margin-top:1.25rem;">Session persists until browser is closed.</p>
+    </div>
+</div>
+
+<div class="reveal" id="deck" style="display:none;">
+<div class="slides">
+
+<!-- ═══════════════ TITLE ═══════════════ -->
+<section>
+<div class="top-bar"></div>
+<div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%;">
+    <div style="margin-bottom:16px;">
+        <svg width="70" height="70" viewBox="0 0 70 70"><circle cx="35" cy="35" r="32" fill="none" stroke="#7C3AED" stroke-width="2.5"/><circle cx="35" cy="35" r="20" fill="none" stroke="#38BDF8" stroke-width="1.5"/><circle cx="35" cy="35" r="8" fill="#7C3AED"/><circle cx="35" cy="12" r="3" fill="#38BDF8"/><circle cx="35" cy="58" r="3" fill="#38BDF8"/><circle cx="12" cy="35" r="3" fill="#38BDF8"/><circle cx="58" cy="35" r="3" fill="#38BDF8"/></svg>
+    </div>
+    <h1 style="font-size:1.8em; margin:0;">Agentic AI<br>Competitive Intelligence</h1>
+    <h3 style="font-size:0.7em; margin-top:8px;">Lyzr.ai Deep-Dive &amp; Strategic Response</h3>
+    <p style="font-size:0.55em; margin-top:20px; color:var(--gray);">Internal &amp; Confidential | July 2026</p>
+</div>
+</section>
+
+<!-- ═══════════════ EXECUTIVE SUMMARY ═══════════════ -->
+<section>
+<div class="top-bar"></div>
+<h2>Executive Summary</h2>
+<h3>Lyzr has built the business model enterprise customers want for agentic AI</h3>
+<div class="stat-row">
+    <div class="stat-box"><span class="num">$500M</span><span class="lbl">Valuation (Jul 2026)</span></div>
+    <div class="stat-box"><span class="num">$125M</span><span class="lbl">Total Raised</span></div>
+    <div class="stat-box"><span class="num">250%</span><span class="lbl">QoQ Revenue Growth</span></div>
+    <div class="stat-box"><span class="num">500+</span><span class="lbl">Enterprise Customers</span></div>
+    <div class="stat-box"><span class="num">1,000+</span><span class="lbl">Agents in Production</span></div>
+</div>
+<table>
+    <tr><th>Dimension</th><th>Lyzr's Position</th><th>Implication</th></tr>
+    <tr><td><strong>Category</strong></td><td>"Control Plane for AI Agents" -- framework-agnostic governance</td><td>Governs LangGraph, CrewAI, Agentforce, Copilot</td></tr>
+    <tr><td><strong>Pricing</strong></td><td>$0.03-$0.30 per agent run (consumption)</td><td>Aligns cost with value; no seat taxes</td></tr>
+    <tr><td><strong>Customers</strong></td><td>Accenture, JPMorgan Chase, Pepsi, US Gov</td><td>Proven in regulated verticals</td></tr>
+    <tr><td><strong>Thesis</strong></td><td>Context engineering > model selection</td><td>Model-agnostic, cloud-agnostic, framework-agnostic</td></tr>
+</table>
+</section>
+
+<!-- ═══════════════ SECTION: LYZR ═══════════════ -->
+<section class="section-divider">
+<h2>Lyzr.ai Deep-Dive</h2>
+<h3>Product Architecture, Control Plane, and Capabilities</h3>
+</section>
+
+<!-- COMPANY -->
+<section>
+<div class="top-bar"></div>
+<h2>Company Profile</h2>
+<h3>Founded 2023 | Jersey City, NJ | 150-200 employees across 7 countries</h3>
+<div class="two-col">
+<div>
+    <p><strong>Founding Team</strong></p>
+    <ul>
+        <li><strong>Siva Surendira</strong> -- CEO. 2x founder. Previously built PowerUpCloud (acquired by L&amp;T Infotech, 2019). Forbes Technology Council.</li>
+        <li><strong>Jithin Jimmy</strong> -- CTO</li>
+        <li><strong>Anirudh Narayan</strong> -- CGO</li>
+    </ul>
+    <p><strong>Board:</strong> Henry Ford III, Madhu Shalini Iyer</p>
+</div>
+<div>
+    <p><strong>Key Investors &amp; What They Signal</strong></p>
+    <ul>
+        <li><strong>Accenture Ventures</strong> -- Enterprise sales channel to Fortune 500</li>
+        <li><strong>In-Q-Tel</strong> -- US intelligence community VC. Government credibility.</li>
+        <li><strong>Rocketship.vc</strong> -- SaaS-focused growth</li>
+        <li><strong>Avataar Venture Partners</strong> -- Growth-stage confidence</li>
+        <li><strong>Open Opportunity Fund</strong> -- Ex-SoftBank network</li>
+    </ul>
+    <p><strong>Certifications:</strong> SOC 2 Type II, ISO 27001, GDPR, HIPAA-capable</p>
+</div>
+</div>
+</section>
+
+<!-- PRODUCT ARCHITECTURE -->
+<section>
+<div class="top-bar"></div>
+<h2>Five-Layer Product Stack</h2>
+<h3>Full-stack from text-to-app down to governed deployment</h3>
+<table>
+    <tr><th>Layer</th><th>Product</th><th>What It Does</th></tr>
+    <tr><td><span class="tag tag-purple">App</span></td><td><strong>Architect</strong></td><td>Text-to-app: plain English &rarr; deployed full-stack agentic application (React + multi-agent backend)</td></tr>
+    <tr><td><span class="tag tag-purple">Builder</span></td><td><strong>Agent Studio</strong></td><td>No-code/low-code visual builder. SuperFlow (DAG workflows), Manager Agent (dynamic orchestration), voice agents</td></tr>
+    <tr><td><span class="tag tag-purple">Framework</span></td><td><strong>Agent Framework + ADK</strong></td><td>Runtime engine: LLM calls, tool execution, memory, RAI guardrails. Python SDK (<code>lyzr-adk</code> v0.1.11, MIT)</td></tr>
+    <tr><td><span class="tag tag-purple">Knowledge</span></td><td><strong>Knowledge Patterns</strong></td><td>Classic RAG, Graph-RAG (Neo4j), Semantic Model (Text-to-SQL), Agentic RAG, Cognis (org memory w/ MCP)</td></tr>
+    <tr><td><span class="tag tag-purple">Governance</span></td><td><strong>Control Plane</strong></td><td>Agent registry, per-agent Okta identity, CI/CD pipelines, Simulation Engine, Responsible AI, observability</td></tr>
+</table>
+<p style="font-size:0.48em; margin-top:6px;"><strong>Deployment:</strong> Lyzr Cloud | Customer VPC | On-Premise / Air-Gapped &nbsp;&nbsp;|&nbsp;&nbsp; <strong>LLMs:</strong> OpenAI, Anthropic, Google, Bedrock, Groq, Ollama (air-gap)</p>
+</section>
+
+<!-- CONTROL PLANE -->
+<section>
+<div class="top-bar"></div>
+<h2>Control Plane -- The Crown Jewel</h2>
+<h3>"The Vercel for AI agents" -- governs agents from ANY framework, ANY cloud</h3>
+<div class="three-col">
+    <div class="card"><h4>Agent Registry</h4><p>Central catalog of every agent across the enterprise. Tracks framework, runtime, deployment status, approval history, eval results. The "etcd" for agents.</p></div>
+    <div class="card"><h4>Per-Agent Okta Identity</h4><p>Each agent gets its own dedicated Okta identity -- scoped, attributed, auto-revoked on decommission. Closes the shared-credential liability.</p></div>
+    <div class="card"><h4>Agent CI/CD Pipeline</h4><p>Git push &rarr; static analysis &rarr; security scan &rarr; RAI check &rarr; simulation eval &rarr; registry &rarr; Okta &rarr; staged promotion. One-command rollback.</p></div>
+    <div class="card"><h4>Cross-Framework</h4><p>LangGraph, CrewAI, Agentforce, Copilot, custom Python -- all governed under one pipeline. No rewrite required. Point at your repo.</p></div>
+    <div class="card"><h4>Observability</h4><p>Per-run traces: input, output, latency, token usage, cost, hallucination rate, tool call success. Real-time dashboards.</p></div>
+    <div class="card"><h4>EU AI Act Ready</h4><p>Immutable deployment logs, evaluation records, approval chains, step-level traces. Audit-ready from first deployment.</p></div>
+</div>
+</section>
+
+<!-- SIMULATION ENGINE -->
+<section>
+<div class="top-bar"></div>
+<h2>Agent Simulation Engine</h2>
+<h3>Pre-production testing + automated hardening -- addresses the 89% failure rate</h3>
+<div class="two-col">
+<div>
+    <p><strong>How It Works</strong></p>
+    <ol>
+        <li><strong>World Model:</strong> Define personas (first-time user, power user, adversarial) &times; scenarios (basic query, compliance issue, out-of-scope)</li>
+        <li><strong>Cross-product matrix</strong> generates synthetic test conversations</li>
+        <li><strong>20+ parallel workers</strong> execute against the live agent</li>
+        <li><strong>Score each response:</strong> task completion, hallucination, faithfulness, toxicity, tool accuracy</li>
+        <li><strong>Automated hardening:</strong> analyzes failures, rewrites agent instructions, re-tests in loop</li>
+        <li><strong>Quality gate:</strong> 90%+ task completion, zero toxicity, hallucination below threshold</li>
+    </ol>
+</div>
+<div>
+    <p><strong>vs. LangSmith / Braintrust</strong></p>
+    <table>
+        <tr><th>Feature</th><th>Lyzr</th><th>Others</th></tr>
+        <tr><td>Synthetic test gen</td><td class="hl-green">Native</td><td>Manual</td></tr>
+        <tr><td>Multi-turn eval</td><td class="hl-green">Native</td><td>Limited</td></tr>
+        <tr><td>Auto-hardening</td><td class="hl-green">Native</td><td>None</td></tr>
+        <tr><td>CI/CD integration</td><td class="hl-green">Built-in</td><td>Separate</td></tr>
+        <tr><td>Framework support</td><td class="hl-green">Any</td><td>Framework-specific</td></tr>
+    </table>
+    <p style="margin-top:8px;"><strong>Key difference:</strong> LangSmith is an <em>evaluation tool</em>. Lyzr's engine is an <em>evaluation + automated repair system</em> inside a governed deployment pipeline.</p>
+</div>
+</div>
+</section>
+
+<!-- PRE-BUILT AGENTS -->
+<section>
+<div class="top-bar"></div>
+<h2>Pre-Built Vertical Agents</h2>
+<h3>200+ agents across BFSI, healthcare, HR, sales, marketing -- production-tested</h3>
+<div class="three-col">
+    <div class="card"><h4>Amadeo -- Banking OS</h4>
+        <p><strong>KYC:</strong> 90% onboarding time reduction<br><strong>Loans:</strong> 75% faster processing, 3x capacity<br><strong>Compliance:</strong> 30,000+ hours saved/year<br><strong>Cost:</strong> ~$1.02 per KYC run<br><strong>ROI:</strong> 300% in year 1</p>
+    </div>
+    <div class="card"><h4>Jazon -- Sales OS</h4>
+        <p><strong>Function:</strong> AI SDR -- prospecting, outreach, CRM updates<br><strong>Scale:</strong> Replaces up to 12 SDRs<br><strong>Speed:</strong> First outbound in 14 days<br><strong>Integrations:</strong> Salesforce, HubSpot, Outreach, Gong<br><strong>Deploy:</strong> 80% choose private cloud</p>
+    </div>
+    <div class="card"><h4>Skott -- Marketing OS</h4>
+        <p><strong>Function:</strong> Campaign orchestration, content, ABM, analytics<br><strong>Agents:</strong> 400+ activated by objective<br><strong>Speed:</strong> First agents in 48 hours<br><strong>Integrations:</strong> HubSpot, Marketo, 6sense<br><strong>Full OS:</strong> Live within 30 days</p>
+    </div>
+</div>
+<p style="font-size:0.48em; margin-top:8px;"><strong>SivaClaw:</strong> Lyzr's own agent ran their $100M Series B fundraise -- responded to 130+ investors, drafted memos, tracked slide engagement. 4x oversubscribed. Plan to open-source it.</p>
+</section>
+
+<!-- ═══════════════ SECTION: MARKET ═══════════════ -->
+<section class="section-divider">
+<h2>Market Intelligence</h2>
+<h3>TAM, Adoption Gap, and Emerging Standards</h3>
+</section>
+
+<!-- MARKET SIZE -->
+<section>
+<div class="top-bar"></div>
+<h2>Market Sizing</h2>
+<h3>Massive TAM with explosive growth, but brutal execution gap</h3>
+<div class="stat-row">
+    <div class="stat-box"><span class="num">$10-12B</span><span class="lbl">Standalone Agentic AI (2026)</span></div>
+    <div class="stat-box"><span class="num">$206.5B</span><span class="lbl">Total AI Agent Software Spend</span></div>
+    <div class="stat-box"><span class="num">44-50%</span><span class="lbl">CAGR through 2033</span></div>
+    <div class="stat-box"><span class="num">$183B</span><span class="lbl">Projected Market 2033</span></div>
+</div>
+<div class="stat-row" style="margin-top:12px;">
+    <div class="stat-box" style="border-left-color:var(--red);"><span class="num">83-93%</span><span class="lbl">Plan to Deploy Agents</span></div>
+    <div class="stat-box" style="border-left-color:var(--red);"><span class="num">23%</span><span class="lbl">Actually Scaling</span></div>
+    <div class="stat-box" style="border-left-color:var(--red);"><span class="num">89%</span><span class="lbl">Never Reach Production</span></div>
+    <div class="stat-box" style="border-left-color:var(--red);"><span class="num">40%+</span><span class="lbl">Projects Cancelled by 2027</span></div>
+</div>
+<p style="font-size:0.50em; text-align:center; margin-top:8px;"><strong>Key insight:</strong> The ambition-to-execution gap is massive. Lyzr's Control Plane + Simulation Engine are designed to close exactly this gap.</p>
+</section>
+
+<!-- EMERGING STANDARDS -->
+<section>
+<div class="top-bar"></div>
+<h2>Emerging Standards &amp; the Governance Gap</h2>
+<h3>MCP + A2A handle coordination. Governance is the open gap -- and Lyzr's strategic play.</h3>
+<table>
+    <tr><th>Layer</th><th>Protocol</th><th>Creator</th><th>Purpose</th><th>Governance?</th></tr>
+    <tr><td>Tooling</td><td><strong>MCP</strong></td><td>Anthropic &rarr; AAIF</td><td>Agent-to-tool connectivity</td><td class="hl-red">None</td></tr>
+    <tr><td>Coordination</td><td><strong>A2A</strong></td><td>Google &rarr; AAIF</td><td>Agent discovery &amp; delegation (Agent Cards)</td><td class="hl-red">Minimal</td></tr>
+    <tr><td>Governance</td><td><strong>???</strong></td><td><em>Open gap</em></td><td>Identity, audit, RBAC, human escalation, policy</td><td class="hl-red">Missing layer</td></tr>
+</table>
+<p style="font-size:0.48em; margin-top:8px;"><strong>Lyzr's play:</strong> Their Control Plane fills the governance gap that MCP/A2A leave open. If the protocol community standardizes governance, Lyzr adapts. If governance remains fragmented, Lyzr's Control Plane becomes the de facto standard.</p>
+<p style="font-size:0.48em;"><strong>EU AI Act accelerant:</strong> Requires demonstrable governance for high-risk AI -- evidence, not policy documents. Creates regulatory urgency that protocol-level solutions can't yet address.</p>
+</section>
+
+<!-- ═══════════════ SECTION: COMPETITIVE ═══════════════ -->
+<section class="section-divider">
+<h2>Competitive Landscape</h2>
+<h3>Four Layers -- Lyzr sits above frameworks AND hyperscaler platforms</h3>
+</section>
+
+<!-- FOUR LAYERS -->
+<section>
+<div class="top-bar"></div>
+<h2>The Four-Layer Competitive Map</h2>
+<h3>Lyzr doesn't compete with frameworks -- it governs them</h3>
+<table>
+    <tr><th>Layer</th><th>Players</th><th>Lyzr's Relationship</th></tr>
+    <tr><td><span class="tag tag-purple">L4: Control Plane</span></td><td><strong>Lyzr</strong>, IBM watsonx Orchestrate</td><td><em>This is where Lyzr plays</em></td></tr>
+    <tr><td><span class="tag">L3: Hyperscaler Platforms</span></td><td>Microsoft Copilot Studio, Salesforce Agentforce, AWS Agent Core, Google Vertex AI</td><td>Lyzr governs agents from these platforms</td></tr>
+    <tr><td><span class="tag">L2: Agent Frameworks</span></td><td>LangGraph (47M+ downloads/mo), CrewAI (51K stars), Microsoft Agent Framework, OpenAI SDK</td><td>Lyzr governs agents built on these frameworks</td></tr>
+    <tr><td><span class="tag">L1: Infrastructure</span></td><td><strong>RHOAI / OpenShift</strong>, AWS, Azure, GCP</td><td>Lyzr <em>runs on top of</em> this layer</td></tr>
+</table>
+<p style="font-size:0.50em; margin-top:8px;"><strong>Strategic risk:</strong> A customer can use LangGraph (framework) on OpenShift (infrastructure) with Lyzr (control plane). Lyzr owns the customer relationship. Infrastructure is commoditized beneath it.</p>
+</section>
+
+<!-- LYZR vs RHOAI -->
+<section>
+<div class="top-bar"></div>
+<h2>Lyzr vs RHOAI -- Gap Analysis</h2>
+<h3>Where they're ahead, where we're ahead</h3>
+<div class="two-col">
+<div>
+    <p style="font-size:0.52em; font-weight:700; color:var(--red);">Where Lyzr is Ahead</p>
+    <table>
+        <tr><td>Agent Builder (No-Code)</td><td><span class="gap-crit">Critical gap</span></td></tr>
+        <tr><td>Text-to-App (Architect)</td><td><span class="gap-crit">Critical gap</span></td></tr>
+        <tr><td>Pre-Built Vertical Agents (200+)</td><td><span class="gap-crit">Critical gap</span></td></tr>
+        <tr><td>Multi-Agent Orchestration</td><td><span class="gap-crit">Critical gap</span></td></tr>
+        <tr><td>Agent CI/CD Pipeline</td><td><span class="gap-sig">Significant gap</span></td></tr>
+        <tr><td>Per-Agent Identity (Okta)</td><td><span class="gap-sig">Significant gap</span></td></tr>
+        <tr><td>Agent Registry</td><td><span class="gap-sig">Significant gap</span></td></tr>
+        <tr><td>Agent Simulation Engine</td><td><span class="gap-sig">Significant gap</span></td></tr>
+        <tr><td>RAI for Agents (infra-level)</td><td><span class="gap-mod">Moderate gap</span></td></tr>
+        <tr><td>Knowledge Management</td><td><span class="gap-sig">Significant gap</span></td></tr>
+    </table>
+</div>
+<div>
+    <p style="font-size:0.52em; font-weight:700; color:var(--green);">Where RHOAI is Ahead</p>
+    <table>
+        <tr><td>GPU Scheduling (Kueue)</td><td><span class="ahead">Lyzr can't do this</span></td></tr>
+        <tr><td>Model Serving (vLLM, KServe)</td><td><span class="ahead">Lyzr can't do this</span></td></tr>
+        <tr><td>Model Training / Fine-Tuning</td><td><span class="ahead">Lyzr can't do this</span></td></tr>
+        <tr><td>Model Registry &amp; Lineage</td><td><span class="ahead">Lyzr can't do this</span></td></tr>
+        <tr><td>ML Pipelines (Kubeflow)</td><td><span class="ahead">Lyzr can't do this</span></td></tr>
+        <tr><td>Kubernetes Orchestration</td><td><span class="ahead">Lyzr can't do this</span></td></tr>
+        <tr><td>Hardware Optimization</td><td><span class="ahead">Lyzr can't do this</span></td></tr>
+        <tr><td>Hybrid Cloud (identical on-prem/cloud)</td><td><span class="ahead">RHOAI stronger</span></td></tr>
+        <tr><td>Open Source DNA</td><td><span class="ahead">RHOAI stronger</span></td></tr>
+    </table>
+</div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section>
+<div class="top-bar"></div>
+<h2>Pricing Comparison</h2>
+<h3>The market is shifting to consumption-based pricing -- Lyzr leads this shift</h3>
+<table>
+    <tr><th>Platform</th><th>Model</th><th>Price</th><th>Notes</th></tr>
+    <tr><td><strong>Lyzr</strong></td><td>Per-run</td><td>$0.03-$0.30/run</td><td>VPC 50% cheaper. LLM pass-through. No seat tax.</td></tr>
+    <tr><td>Salesforce Agentforce</td><td>Per-conversation</td><td>~$2/conversation</td><td>Salesforce-locked</td></tr>
+    <tr><td>Microsoft Copilot Studio</td><td>Per-user + credits</td><td>$30/user/mo + credits</td><td>M365-locked</td></tr>
+    <tr><td>IBM watsonx Orchestrate</td><td>Subscription + usage</td><td>~$530/month base</td><td>Enterprise implementation required</td></tr>
+    <tr><td>AWS Bedrock Agents</td><td>Per-invocation</td><td>~$0.01-0.10/invocation</td><td>AWS-locked, infra costs separate</td></tr>
+</table>
+<p style="font-size:0.48em; margin-top:6px;"><strong>Lyzr's KYC benchmark:</strong> 20+ agents, full pipeline = <strong>$1.02/run</strong> vs. $50-100+ for human labor. 95% cheaper. ROI argument writes itself.</p>
+</section>
+
+<!-- ═══════════════ SECTION: STRATEGIC ═══════════════ -->
+<section class="section-divider">
+<h2>Strategic Assessment</h2>
+<h3>SWOT, Key Questions, and Competitive Response</h3>
+</section>
+
+<!-- SWOT -->
+<section>
+<div class="top-bar"></div>
+<h2>Lyzr SWOT Analysis</h2>
+<div class="two-col">
+<div>
+    <div class="card card-green" style="margin-bottom:8px;"><h4>Strengths</h4>
+        <p>&bull; Only cross-framework, multi-cloud control plane at scale<br>&bull; Consumption pricing aligned with value<br>&bull; Fortune 500 + regulated industry + US Gov traction<br>&bull; In-Q-Tel backing (government credibility)<br>&bull; SivaClaw "eat your own dogfood" proof<br>&bull; Sovereign / air-gapped deployment<br>&bull; Simulation Engine (unique differentiator)<br>&bull; Accenture sales channel</p>
+    </div>
+    <div class="card card-red"><h4>Weaknesses</h4>
+        <p>&bull; Smaller field org than hyperscalers<br>&bull; SDK still beta (v0.1.11), less mature DX than LangGraph<br>&bull; Heavy reliance on own content for positioning<br>&bull; Open-core, not fully open source<br>&bull; Platform dependency (requires Lyzr API key)<br>&bull; No infrastructure story (zero GPU/model serving)</p>
+    </div>
+</div>
+<div>
+    <div class="card card-sky" style="margin-bottom:8px;"><h4>Opportunities</h4>
+        <p>&bull; Governance gap in MCP/A2A = strategic territory<br>&bull; 89% production failure rate = their exact value prop<br>&bull; Multi-framework sprawl inevitable (5-7 per enterprise)<br>&bull; EU AI Act regulatory demand for agent governance<br>&bull; Open-sourcing SivaClaw for developer adoption<br>&bull; ShadowLM for model ownership play</p>
+    </div>
+    <div class="card card-orange"><h4>Threats</h4>
+        <p>&bull; Hyperscalers build cross-framework governance<br>&bull; IBM watsonx has analyst credibility (Gartner/Forrester)<br>&bull; If one framework wins, control plane need weakens<br>&bull; 40%+ project cancellation rate could stall market<br>&bull; <strong>Open-source control plane from a competitor</strong><br>&bull; Protocol governance standardization in AAIF</p>
+    </div>
+</div>
+</div>
+</section>
+
+<!-- COMPETITIVE RESPONSE -->
+<section>
+<div class="top-bar"></div>
+<h2>Competitive Response Playbook</h2>
+<h3>Three-phase tactical plan -- from foundation to platform play</h3>
+<div class="three-col">
+    <div class="card card-green">
+        <h4>Phase 1: Foundation (0-6 mo)</h4>
+        <p><strong>1.1</strong> Agent Registry on OpenShift (CRDs)<br>
+        <strong>1.2</strong> Agent Observability (per-agent traces via OTel/Prometheus)<br>
+        <strong>1.3</strong> Agent CI/CD via GitOps (extend ArgoCD for agents)<br><br>
+        <em>The registry is the "etcd" of agent governance. Everything builds on it.</em></p>
+    </div>
+    <div class="card card-orange">
+        <h4>Phase 2: Differentiate (6-12 mo)</h4>
+        <p><strong>2.1</strong> Agent Simulation Service (open-source, framework-agnostic)<br>
+        <strong>2.2</strong> Agent Identity via Keycloak/RHSSO (not Okta)<br>
+        <strong>2.3</strong> Vertical Reference Architectures ("KYC on OpenShift in 30 days")<br><br>
+        <em>Uses customer's existing identity infra. Open-source advantage.</em></p>
+    </div>
+    <div class="card" style="border-top-color:var(--purple);">
+        <h4>Phase 3: Platform Play (12-18 mo)</h4>
+        <p><strong>3.1</strong> Open-Source Agent Control Plane (combine P1 + P2)<br>
+        <strong>3.2</strong> Consumption-based metering for agent workloads<br><br>
+        <em>Full stack: model training + serving + GPU + agent governance. One platform, one bill, open source.</em><br><br>
+        <strong>If we open-source an agent control plane, we do to Lyzr what Kubernetes did to proprietary orchestrators.</strong></p>
+    </div>
+</div>
+</section>
+
+<!-- KEY QUESTIONS -->
+<section>
+<div class="top-bar"></div>
+<h2>Five Key Strategic Questions</h2>
+<table>
+    <tr><th style="width:40%;">Question</th><th>Assessment</th></tr>
+    <tr><td><strong>1. Can "Control Plane" become as fundamental as Kubernetes?</strong></td><td>Likely 2-3 control planes coexist (Lyzr for cross-framework, IBM for regulated, hyperscalers for their ecosystems). Not "one to rule them all" near-term.</td></tr>
+    <tr><td><strong>2. Will hyperscalers tolerate a neutral control plane?</strong></td><td>Initially yes. Lyzr has 2-3 year window before hyperscaler governance becomes "good enough."</td></tr>
+    <tr><td><strong>3. Does the market support $500M valuation?</strong></td><td>Aggressive but defensible IF 44-50% CAGR holds and Lyzr maintains 250% QoQ growth.</td></tr>
+    <tr><td><strong>4. How defensible is the moat?</strong></td><td>Moderate and time-dependent. 18-24 months to deepen switching costs (OGI data layer, enterprise registries) before competitors close the gap.</td></tr>
+    <tr><td><strong>5. What if LLM costs drop to near-zero?</strong></td><td><strong>Net positive for Lyzr.</strong> More agents deployed = more governance needed. Lyzr charges for platform, not inference.</td></tr>
+</table>
+</section>
+
+<!-- CLOSING -->
+<section>
+<div class="top-bar"></div>
+<h2>The Bottom Line</h2>
+<h3>What we must do -- and what we must not do</h3>
+<div class="two-col">
+<div>
+    <div class="card card-green">
+        <h4>Do</h4>
+        <p>&bull; <strong>Build or partner for a Control Plane</strong> -- the governance layer is a real gap<br>
+        &bull; <strong>Invest in agent simulation/evaluation</strong> -- framework-agnostic, open-source<br>
+        &bull; <strong>Develop consumption-based pricing</strong> for agentic workloads<br>
+        &bull; <strong>Create vertical reference architectures</strong> -- "KYC agent on OpenShift in 30 days"<br>
+        &bull; <strong>Position infrastructure as foundation</strong> -- Lyzr needs someone to run on. Make it us.<br>
+        &bull; <strong>Engage with AAIF</strong> governance working group</p>
+    </div>
+</div>
+<div>
+    <div class="card card-red">
+        <h4>Don't</h4>
+        <p>&bull; <strong>Don't build a no-code agent builder (yet)</strong> -- not our DNA. Focus on infra + governance first.<br>
+        &bull; <strong>Don't try to match Lyzr feature-for-feature</strong> -- win by being open-source and infra-native<br>
+        &bull; <strong>Don't ignore the threat</strong> -- "they're just an app layer company" misses the control plane layer above us<br>
+        &bull; <strong>Don't wait for standards</strong> -- Lyzr is shipping governance NOW. Standards are 2-3 years away.</p>
+    </div>
+</div>
+</div>
+<p style="font-size:0.50em; text-align:center; margin-top:12px;"><strong>If we don't fill the governance layer, Lyzr (or IBM) will sit on top of our infrastructure and own the customer relationship.</strong></p>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+(function() {
+    var V = new Set(("__AUTH_HASHES__").split(",").filter(Boolean));
+    async function sha(m) {
+        var b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(m));
+        return Array.from(new Uint8Array(b)).map(function(x){return x.toString(16).padStart(2,"0")}).join("");
+    }
+    var K = "agentic_analyze_auth", wall = document.getElementById("auth-wall"), deck = document.getElementById("deck");
+    function lock() { wall.style.display = "block"; deck.style.display = "none"; }
+    function unlock() { wall.style.display = "none"; deck.style.display = "block"; Reveal.initialize({ hash: true, slideNumber: true, controls: true, progress: true, center: true, transition: 'slide' }); }
+    if (sessionStorage.getItem(K) === "1") { unlock(); } else { lock(); }
+    document.getElementById("auth-form").addEventListener("submit", async function(e) {
+        e.preventDefault();
+        var u = document.getElementById("auth-user").value, p = document.getElementById("auth-pass").value;
+        var h = await sha(u + ":" + p);
+        if (V.has(h)) { sessionStorage.setItem(K, "1"); unlock(); }
+        else { document.getElementById("auth-error").style.display = "block"; document.getElementById("auth-pass").value = ""; }
+    });
+})();
+</script>
+</body>
+</html>
