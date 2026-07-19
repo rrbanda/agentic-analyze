@@ -89,46 +89,43 @@
 </div>
 </section>
 
-<!-- S1: GAP ANALYSIS - THE CRITICAL SLIDE -->
+<!-- S1: GAP ANALYSIS -->
 <section>
 <div class="top-bar"></div>
 <h2>Product Gap Analysis: Lyzr vs Red Hat AI</h2>
-<h3>Where each platform leads -- red = our gap, green = our strength, purple = emerging/roadmap</h3>
-<div class="two-col">
+<h3>Red = our gap &nbsp; Green = our strength &nbsp; Purple = closing via roadmap</h3>
+<div class="two-col" style="align-items:start">
 <div>
-    <p style="font-size:.44em;font-weight:700;color:var(--red)">Where Lyzr is Ahead Today</p>
-    <table>
-        <tr><td>No-code agent builder (Agent Studio)</td><td><span class="gc">Critical</span></td></tr>
-        <tr><td>Text-to-app generator (Architect)</td><td><span class="gc">Critical</span></td></tr>
-        <tr><td>200+ pre-built vertical agents</td><td><span class="gc">Critical</span></td></tr>
-        <tr><td>Agent simulation + auto-hardening</td><td><span class="gs">Significant</span></td></tr>
-        <tr><td>Per-agent Okta identity + auto-revoke</td><td><span class="gs">Significant</span></td></tr>
-        <tr><td>Agent CI/CD (Git-triggered, versioned)</td><td><span class="gs">Significant</span></td></tr>
-        <tr><td>Cross-framework control plane (GA)</td><td><span class="gs">Significant</span></td></tr>
-        <tr><td>Consumption pricing ($0.03/run)</td><td><span class="gm">Model gap</span></td></tr>
-        <tr><td>Knowledge Graph (Neo4j) + Text-to-SQL</td><td><span class="gm">Moderate</span></td></tr>
-    </table>
+    <div class="card card-red" style="margin-bottom:5px"><h4 style="color:var(--red)">Where Lyzr is Ahead Today</h4>
+    <p><span class="gc">Critical</span> No-code agent builder (Agent Studio)<br>
+    <span class="gc">Critical</span> Text-to-app generator (Architect)<br>
+    <span class="gc">Critical</span> 200+ pre-built vertical agents<br>
+    <span class="gs">Significant</span> Agent simulation + auto-hardening<br>
+    <span class="gs">Significant</span> Per-agent Okta identity + auto-revoke<br>
+    <span class="gs">Significant</span> Agent CI/CD (Git-triggered, versioned)<br>
+    <span class="gs">Significant</span> Cross-framework control plane (GA)<br>
+    <span class="gm">Moderate</span> Consumption pricing ($0.03/run)<br>
+    <span class="gm">Moderate</span> Knowledge Graph (Neo4j) + Text-to-SQL</p>
+    </div>
 </div>
 <div>
-    <p style="font-size:.44em;font-weight:700;color:var(--grn)">Where Red Hat AI is Ahead</p>
-    <table>
-        <tr><td>GPU scheduling (Kueue, DRA)</td><td><span class="ga">Lyzr can't</span></td></tr>
-        <tr><td>Self-hosted model serving (vLLM, llm-d, KServe)</td><td><span class="ga">Lyzr can't</span></td></tr>
-        <tr><td>Self-hosted model training (KF Trainer v2, InstructLab)</td><td><span class="ga">Lyzr can't</span></td></tr>
-        <tr><td>Model registry + catalog (GA 2.25/3.x)</td><td><span class="ga">Lyzr can't</span></td></tr>
-        <tr><td>ML/Data pipelines (Kubeflow, Argo)</td><td><span class="ga">Lyzr can't</span></td></tr>
-        <tr><td>Kubernetes-native orchestration</td><td><span class="ga">Lyzr can't</span></td></tr>
-        <tr><td>Open source (genuine, upstream)</td><td><span class="ga">Stronger</span></td></tr>
-        <tr><td>Hybrid cloud (identical everywhere)</td><td><span class="ga">Stronger</span></td></tr>
-    </table>
-    <p style="font-size:.44em;font-weight:700;color:var(--purd);margin-top:4px">Closing the Gap (3.x Roadmap)</p>
-    <table>
-        <tr><td>Kagenti (agent discovery + governance)</td><td><span class="gn">2H 2026</span></td></tr>
-        <tr><td>EvalHub (agent benchmarking)</td><td><span class="gn">Tech preview</span></td></tr>
-        <tr><td>MCP catalog + gateway</td><td><span class="gn">3.3+</span></td></tr>
-        <tr><td>AgentOps (MLflow tracing, tool audit)</td><td><span class="gn">3.4 GA</span></td></tr>
-        <tr><td>Adversarial vulnerability scanning</td><td><span class="gn">Tech preview</span></td></tr>
-    </table>
+    <div class="card card-grn" style="margin-bottom:5px"><h4 style="color:var(--grn)">Where Red Hat AI is Ahead</h4>
+    <p><span class="ga">Lyzr can't</span> GPU scheduling (Kueue, DRA)<br>
+    <span class="ga">Lyzr can't</span> Self-hosted model serving (vLLM, llm-d)<br>
+    <span class="ga">Lyzr can't</span> Self-hosted model training (InstructLab)<br>
+    <span class="ga">Lyzr can't</span> Model registry + catalog (GA 3.x)<br>
+    <span class="ga">Lyzr can't</span> ML/Data pipelines (Kubeflow, Argo)<br>
+    <span class="ga">Lyzr can't</span> Kubernetes-native orchestration<br>
+    <span class="ga">Stronger</span> Open source (genuine, upstream)<br>
+    <span class="ga">Stronger</span> Hybrid cloud (identical everywhere)</p>
+    </div>
+    <div class="card" style="border-top-color:var(--pur)"><h4 style="color:var(--pur)">Closing the Gap (3.x Roadmap)</h4>
+    <p><span class="gn">3.5/3.6</span> OpenShell (agent sandbox + governance)<br>
+    <span class="gn">Tech preview</span> EvalHub (agent benchmarking)<br>
+    <span class="gn">3.3+</span> MCP catalog + gateway<br>
+    <span class="gn">3.4 GA</span> AgentOps (MLflow tracing, tool audit)<br>
+    <span class="gn">Tech preview</span> Adversarial vulnerability scanning</p>
+    </div>
 </div>
 </div>
 </section>
@@ -168,14 +165,14 @@
 <section>
 <div class="top-bar"></div>
 <h2>Red Hat AI's Agentic Response (3.x Roadmap)</h2>
-<h3>AgentOps, Kagenti, EvalHub, MCP Catalog -- closing the gap from infrastructure up</h3>
+<h3>OpenShell, AgentOps, EvalHub, MCP Catalog -- closing the gap from infrastructure up</h3>
 <div class="three-col">
-    <div class="card card-grn"><h4>AgentOps (3.4 GA)</h4><ul><li>Framework-agnostic: "Bring Your Own Agent"</li><li>MLflow for end-to-end tracing (inference + tool calls)</li><li>MCP gateway for tool governance</li><li>Identity via SPIFFE/SPIRE</li><li>OpenResponses spec conformant</li></ul></div>
-    <div class="card card-grn"><h4>Kagenti Operator (2H 2026)</h4><ul><li>Auto-discovers agents via A2A AgentCard CRDs</li><li>AgentRuntime CR for enrollment</li><li>Sidecar injection: AuthBridge (identity), tracing, MCP gateway</li><li>No changes to agent code</li><li>Agent catalog + registry in RHOAI UI</li></ul></div>
+    <div class="card card-grn"><h4>OpenShell (3.5/3.6 Target)</h4><ul><li>Kernel-level agent sandboxing (Landlock + seccomp + netns)</li><li>OCSF v1.7.0 structured audit trail</li><li>MCP-aware L7 policy enforcement</li><li>Multi-platform: Podman, K8s, VMs, Windows</li><li>Community: NVIDIA, Docker, SAP, Microsoft, Red Hat (7,600+ stars)</li></ul></div>
+    <div class="card card-grn"><h4>AgentOps (3.4 GA)</h4><ul><li>Framework-agnostic: "Bring Your Own Agent"</li><li>MLflow for end-to-end tracing</li><li>MCP gateway for tool governance</li><li>Identity via SPIFFE/SPIRE</li><li>OpenResponses spec conformant</li></ul></div>
     <div class="card card-grn"><h4>EvalHub (Tech Preview)</h4><ul><li>Scientifically benchmark and score agents</li><li>Adversarial vulnerability scanning</li><li>Pre-deployment safety testing</li><li>Chatterbox Labs acquisition powers this</li></ul></div>
-    <div class="card card-sky"><h4>Gen AI Studio (3.3 GA)</h4><ul><li>Interactive model playground</li><li>Import custom MCP servers</li><li>Toggle tools on/off for determinism</li><li>"View Code" for export to local dev</li><li>Prompt management on roadmap</li></ul></div>
-    <div class="card card-sky"><h4>AI Hub (3.3 GA)</h4><ul><li>Central repo for AI assets: LLMs, MCP servers</li><li>RBAC, usage limits, rate limiting</li><li>Model versioning + catalog</li><li>MaaS: IT becomes token provider</li></ul></div>
-    <div class="card card-sky"><h4>Inference at Scale</h4><ul><li>llm-d: distributed inference with KV-cache aware routing</li><li>Speculative decoding for throughput</li><li>LLM Compressor for quantization</li><li>Multi-tenant governance</li></ul></div>
+    <div class="card card-sky"><h4>Gen AI Studio (3.3 GA)</h4><ul><li>Interactive model playground</li><li>Import custom MCP servers</li><li>Toggle tools on/off for determinism</li><li>"View Code" for export to local dev</li></ul></div>
+    <div class="card card-sky"><h4>AI Hub (3.3 GA)</h4><ul><li>Central repo: LLMs, MCP servers</li><li>RBAC, usage limits, rate limiting</li><li>Model versioning + catalog</li><li>MaaS: IT becomes token provider</li></ul></div>
+    <div class="card card-sky"><h4>Inference at Scale</h4><ul><li>llm-d: KV-cache aware routing</li><li>Speculative decoding</li><li>LLM Compressor quantization</li><li>Multi-tenant governance</li></ul></div>
 </div>
 </section>
 
@@ -224,7 +221,7 @@
     <tr><td>Builder</td><td><strong>Agent Studio</strong></td><td>No-code visual builder, SuperFlow (DAG), Manager Agent, voice</td><td style="color:var(--red)">None (Gen AI Studio is model playground, not agent builder)</td></tr>
     <tr><td>Framework</td><td><strong>ADK + Framework</strong></td><td>Runtime: LLM calls, tools, memory, RAI. Python SDK. MCP/A2A adapters.</td><td style="color:var(--org)">Framework-agnostic (BYOA), but no proprietary SDK</td></tr>
     <tr><td>Knowledge</td><td><strong>Knowledge Patterns</strong></td><td>Classic RAG, Graph-RAG (Neo4j), Text-to-SQL, Agentic RAG, Cognis</td><td style="color:var(--org)">AutoRAG (roadmap), MCP for data access</td></tr>
-    <tr><td>Governance</td><td><strong>Control Plane</strong></td><td>Registry, per-agent Okta, CI/CD, Simulation Engine, RAI, observability</td><td style="color:var(--org)">Kagenti + AgentOps + EvalHub (building)</td></tr>
+    <tr><td>Governance</td><td><strong>Control Plane</strong></td><td>Registry, per-agent Okta, CI/CD, Simulation Engine, RAI, observability</td><td style="color:var(--org)">OpenShell + AgentOps + EvalHub (building)</td></tr>
     <tr><td>Pre-built</td><td><strong>Amadeo / Jazon / Skott</strong></td><td>Banking OS, Sales OS, Marketing OS -- 200+ agents</td><td style="color:var(--red)">None</td></tr>
     <tr><td>Infra</td><td><em>None</em></td><td>Depends on AWS/Azure/GCP/on-prem</td><td style="color:var(--grn)"><strong>Full OpenShift + GPU + vLLM + llm-d</strong></td></tr>
 </table>
@@ -243,7 +240,7 @@
     <div class="card"><h4>Cross-Framework</h4><p>LangGraph, CrewAI, Agentforce, Copilot, custom -- one pipeline. No rewrite. Point at your repo.</p></div>
     <div class="card"><h4>Observability</h4><p>Per-run: input, output, latency, tokens, cost, hallucination rate, tool accuracy.</p></div>
 </div>
-<p style="font-size:.40em;margin-top:4px"><strong>vs Kagenti:</strong> Lyzr's Control Plane is GA with 500+ customers. Kagenti is planned for 2H 2026. The capability gap is real but closing. Key difference: Kagenti is Kubernetes-native (CRDs, SPIFFE), Lyzr is platform-native (Okta, proprietary registry).</p>
+<p style="font-size:.40em;margin-top:4px"><strong>vs OpenShell:</strong> Lyzr's Control Plane is GA with 500+ customers. OpenShell targets RHOAI 3.5/3.6. Key difference: OpenShell provides kernel-level isolation (Landlock+seccomp) and multi-platform portability. Lyzr provides higher-level app tooling (Studio, Architect, pre-built agents).</p>
 </section>
 
 <!-- S7: MARKET -->
@@ -260,7 +257,7 @@
     <div class="stat-box" style="border-left-color:var(--red)"><span class="num" style="background:linear-gradient(135deg,var(--red),var(--org));-webkit-background-clip:text;-webkit-text-fill-color:transparent">89%</span><span class="lbl">Never Reach Prod</span></div>
 </div>
 <p style="font-size:.40em;text-align:center;margin-top:4px"><strong>Why they fail:</strong> governance gaps, hallucination/reliability, integration complexity, no testing, framework fragmentation, no observability, security concerns.</p>
-<p style="font-size:.40em;text-align:center"><strong>Lyzr's pitch:</strong> Control Plane + Simulation Engine + pre-built agents = close the production gap. <strong>Red Hat AI's pitch:</strong> AgentOps + Kagenti + EvalHub + infrastructure = same goal, from the infrastructure up.</p>
+<p style="font-size:.40em;text-align:center"><strong>Lyzr's pitch:</strong> Control Plane + Simulation Engine + pre-built agents = close the production gap. <strong>Red Hat AI's pitch:</strong> OpenShell + AgentOps + EvalHub + infrastructure = same goal, from the infrastructure up.</p>
 </section>
 
 <!-- S8: COMPETITIVE LANDSCAPE -->
@@ -270,13 +267,13 @@
 <h3>Lyzr sits at Layer 4 (control plane). Red Hat AI sits at Layer 1 (infrastructure) and is building into Layer 4.</h3>
 <table>
     <tr><th>Layer</th><th>Players</th><th>Lyzr</th><th>Red Hat AI</th></tr>
-    <tr><td><strong>L4: Control Plane</strong></td><td>Lyzr, IBM watsonx Orchestrate</td><td style="color:var(--grn)">GA product</td><td style="color:var(--org)">Kagenti (2H 2026)</td></tr>
+    <tr><td><strong>L4: Control Plane</strong></td><td>Lyzr, IBM watsonx Orchestrate</td><td style="color:var(--grn)">GA product</td><td style="color:var(--org)">OpenShell + AgentOps (building)</td></tr>
     <tr><td><strong>L3: Agent Platforms</strong></td><td>Copilot Studio, Agentforce, AWS, Google</td><td>Governs their agents</td><td>Framework-agnostic (BYOA)</td></tr>
     <tr><td><strong>L2: Frameworks</strong></td><td>LangGraph (47M dl/mo), CrewAI, MAF, OpenAI SDK</td><td>Governs all</td><td>Supports all</td></tr>
     <tr><td><strong>L1: Infrastructure</strong></td><td>OpenShift, AWS, Azure, GCP</td><td style="color:var(--red)">None (runs on top)</td><td style="color:var(--grn)"><strong>Full stack</strong></td></tr>
 </table>
 <p style="font-size:.40em;margin-top:4px"><strong>Closest competitor to Lyzr:</strong> IBM watsonx Orchestrate (reframed as control plane at IBM Think 2026). Strengths: Gartner/Forrester credibility, deeper governance. Weaknesses: IBM-heavy, slow iteration, $530/mo base.</p>
-<p style="font-size:.40em"><strong>Standards:</strong> MCP (tools) + A2A (agent coordination) under Linux Foundation AAIF. Governance is the <em>open gap</em> -- whoever fills it first wins. Lyzr is shipping now. Kagenti targets this.</p>
+<p style="font-size:.40em"><strong>Standards:</strong> MCP (tools) + A2A (agent coordination) under Linux Foundation AAIF. Governance is the <em>open gap</em> -- whoever fills it first wins. Lyzr is shipping now. OpenShell + AgentOps target this.</p>
 </section>
 
 <!-- S9: PRICING -->
@@ -307,7 +304,7 @@
 </div>
 <div>
     <div class="card card-sky" style="margin-bottom:5px"><h4>Opportunities</h4><p>Governance gap in MCP/A2A protocols | 89% production failure rate = their value prop | Multi-framework sprawl inevitable | EU AI Act regulatory demand | ShadowLM model ownership | SI partnerships (Accenture, etc.)</p></div>
-    <div class="card card-org"><h4>Threats to Lyzr</h4><p>Hyperscalers build cross-framework governance | IBM watsonx analyst credibility | <strong>Open-source control plane (Kagenti)</strong> | Single framework dominance (LangGraph?) | 40%+ project cancellation rate | AAIF governance standardization</p></div>
+    <div class="card card-org"><h4>Threats to Lyzr</h4><p>Hyperscalers build cross-framework governance | IBM watsonx analyst credibility | <strong>Open-source agent sandbox (OpenShell)</strong> | Single framework dominance (LangGraph?) | 40%+ project cancellation rate | AAIF governance standardization</p></div>
 </div>
 </div>
 </section>
@@ -318,12 +315,12 @@
 <h2>Recommended Response</h2>
 <h3>Three-phase plan: foundation &rarr; differentiate &rarr; platform play</h3>
 <div class="three-col">
-    <div class="card card-grn"><h4>Phase 1: Foundation (0-6 mo)</h4><p><strong>Accelerate Kagenti</strong> to GA -- agent discovery, identity (SPIFFE), registry<br><strong>AgentOps GA</strong> -- MLflow tracing, MCP gateway, tool audit<br><strong>EvalHub GA</strong> -- pre-prod simulation + adversarial scanning<br><strong>Agent CI/CD via GitOps</strong> -- extend ArgoCD for agent pipelines</p></div>
+    <div class="card card-grn"><h4>Phase 1: Foundation (0-6 mo)</h4><p><strong>Accelerate OpenShell</strong> to GA -- kernel-level agent sandbox, OCSF audit, MCP-aware policy<br><strong>AgentOps GA</strong> -- MLflow tracing, MCP gateway, tool audit<br><strong>EvalHub GA</strong> -- pre-prod simulation + adversarial scanning<br><strong>Agent CI/CD via GitOps</strong> -- extend ArgoCD for agent pipelines</p></div>
     <div class="card card-org"><h4>Phase 2: Differentiate (6-12 mo)</h4><p><strong>Vertical reference architectures</strong> -- "KYC agent on OpenShift in 30 days"<br><strong>Open-source simulation service</strong> (persona &times; scenario, auto-hardening)<br><strong>MCP catalog + marketplace</strong> for reusable agent tools<br><strong>Consumption metering</strong> for agent workloads</p></div>
     <div class="card" style="border-top-color:var(--pur)"><h4>Phase 3: Full Stack (12-18 mo)</h4><p><strong>Metal-to-agent platform:</strong> training + serving + GPU + agent governance in one platform<br><strong>Open-source control plane</strong> -- do to Lyzr what K8s did to proprietary orchestrators<br><strong>InstructLab + ShadowLM equivalent</strong> -- model ownership from agent interaction data</p></div>
 </div>
 <div class="two-col" style="margin-top:6px">
-    <div class="card card-grn"><h4>Do</h4><p>Accelerate Kagenti + AgentOps | Invest in EvalHub | Create vertical accelerators | Position "metal-to-agent" full stack | Engage AAIF governance | Evaluate Lyzr partnership (complementary)</p></div>
+    <div class="card card-grn"><h4>Do</h4><p>Accelerate OpenShell + AgentOps | Invest in EvalHub | Create vertical accelerators | Position "metal-to-agent" full stack | Engage AAIF governance | Evaluate Lyzr partnership (complementary)</p></div>
     <div class="card card-red"><h4>Don't</h4><p>Don't build no-code agent builder (not our DNA yet) | Don't match Lyzr feature-for-feature | Don't ignore the threat ("just an app company") | Don't wait for standards (ship now)</p></div>
 </div>
 </section>
@@ -334,7 +331,7 @@
 <h2>The Bottom Line</h2>
 <div style="text-align:center;max-width:85%;margin:0 auto">
     <p style="font-size:.50em;line-height:1.6;color:var(--grl)">Lyzr has built a <strong style="color:var(--red)">production-ready agent control plane</strong> that sits above our infrastructure layer.<br>They own the customer conversation about agents. We own the infrastructure conversation.</p>
-    <p style="font-size:.50em;line-height:1.6;margin-top:8px;color:var(--grl)">Red Hat AI 3.x is <strong style="color:var(--grn)">building the right capabilities</strong> (Kagenti, AgentOps, EvalHub), but they are <strong style="color:var(--org)">not yet GA</strong>.<br>Lyzr's Control Plane is GA with 500+ customers. The gap is real but closable.</p>
+    <p style="font-size:.50em;line-height:1.6;margin-top:8px;color:var(--grl)">Red Hat AI 3.x is <strong style="color:var(--grn)">building the right capabilities</strong> (OpenShell, AgentOps, EvalHub), but they are <strong style="color:var(--org)">not yet GA</strong>.<br>Lyzr's Control Plane is GA with 500+ customers. The gap is real but closable.</p>
     <div style="margin:14px auto;padding:12px 20px;border-radius:10px;background:linear-gradient(135deg,rgba(124,58,237,.12),rgba(56,189,248,.08));border:1px solid rgba(139,92,246,.2);max-width:90%">
         <p style="font-size:.54em;line-height:1.6;color:#F1F5F9;font-weight:700;margin:0">Our structural advantage: we own the infrastructure layer that Lyzr cannot build.<br>If we add governance on top, we become the <em>only</em> metal-to-agent platform -- and it's open source.</p>
     </div>
