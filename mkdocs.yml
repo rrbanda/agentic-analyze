@@ -1,0 +1,122 @@
+site_name: "Agentic AI Competitive Intelligence"
+site_description: "Deep-dive analysis of Lyzr.ai, the agentic AI landscape, and competitive positioning"
+site_author: "Raghu Banda"
+site_url: "https://rrbanda.github.io/agentic-analyze/"
+
+repo_name: rrbanda/agentic-analyze
+repo_url: https://github.com/rrbanda/agentic-analyze
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+  - mermaid2
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/rrbanda
+
+nav:
+  - Home: index.md
+  - Executive Summary: executive-summary.md
+  - Lyzr Deep-Dive:
+    - lyzr/index.md
+    - Company Profile: lyzr/company-profile.md
+    - Product Architecture: lyzr/product-architecture.md
+    - Control Plane: lyzr/control-plane.md
+    - Agent Studio & Architect: lyzr/studio-architect.md
+    - Simulation Engine: lyzr/simulation-engine.md
+    - Responsible AI: lyzr/responsible-ai.md
+    - Pre-Built Agents: lyzr/prebuilt-agents.md
+    - OGI Vision: lyzr/ogi-vision.md
+  - Market Intelligence:
+    - market/index.md
+    - Market Sizing: market/market-sizing.md
+    - Adoption Gap: market/adoption-gap.md
+    - Emerging Standards: market/emerging-standards.md
+  - Competitive Landscape:
+    - competitive/index.md
+    - Framework vs Platform vs Control Plane: competitive/landscape-layers.md
+    - Lyzr vs IBM watsonx: competitive/lyzr-vs-watsonx.md
+    - Lyzr vs Hyperscalers: competitive/lyzr-vs-hyperscalers.md
+    - Lyzr vs RHOAI: competitive/lyzr-vs-rhoai.md
+    - Pricing Comparison: competitive/pricing-comparison.md
+  - Technical Analysis:
+    - technical/index.md
+    - SDK & Developer Experience: technical/sdk-developer-experience.md
+    - Architecture Patterns: technical/architecture-patterns.md
+    - Knowledge & Memory: technical/knowledge-memory.md
+  - Strategic Assessment:
+    - strategic/index.md
+    - SWOT Analysis: strategic/swot.md
+    - Five Key Questions: strategic/five-questions.md
+    - Competitive Response Playbook: strategic/competitive-response.md
+  - Monitoring & Resources: resources.md
