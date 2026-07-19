@@ -9,18 +9,6 @@ This site is a comprehensive competitive intelligence resource covering **Lyzr.a
 
 ---
 
-## Why This Matters Now
-
-A conversation on July 19, 2026 captured the urgency:
-
-> *"Can you look into Lyzr more? I fear that is the business model that customers want for agentic and I want to see how we can compete."*
->
-> *"I think they already have a platform more robust than ours... certainly at the app layer but I think below as well."*
-
-This site answers that question with data, architecture analysis, and a competitive response playbook.
-
----
-
 ## Key Findings at a Glance
 
 | Dimension | Lyzr's Position | Implication |
