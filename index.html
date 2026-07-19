@@ -105,8 +105,8 @@
     <p style="font-size:.44em;font-weight:700;color:var(--grn)">Where Red Hat AI is Ahead</p>
     <table>
         <tr><td>GPU scheduling (Kueue, DRA)</td><td><span class="ga">Lyzr can't</span></td></tr>
-        <tr><td>Model serving (vLLM, llm-d, KServe)</td><td><span class="ga">Lyzr can't</span></td></tr>
-        <tr><td>Model training (KF Trainer v2, InstructLab)</td><td><span class="ga">Lyzr can't</span></td></tr>
+        <tr><td>Self-hosted model serving (vLLM, llm-d, KServe)</td><td><span class="ga">Lyzr can't</span></td></tr>
+        <tr><td>Self-hosted model training (KF Trainer v2, InstructLab)</td><td><span class="ga">Lyzr can't</span></td></tr>
         <tr><td>Model registry + catalog (GA 2.25/3.x)</td><td><span class="ga">Lyzr can't</span></td></tr>
         <tr><td>ML/Data pipelines (Kubeflow, Argo)</td><td><span class="ga">Lyzr can't</span></td></tr>
         <tr><td>Kubernetes-native orchestration</td><td><span class="ga">Lyzr can't</span></td></tr>
@@ -146,10 +146,10 @@
     <table>
         <tr><th>Capability</th><th>Lyzr</th><th>Red Hat AI</th></tr>
         <tr><td>GPU scheduling</td><td style="color:var(--red)">None</td><td style="color:var(--grn)">Kueue, DRA</td></tr>
-        <tr><td>Model serving</td><td style="color:var(--red)">Uses APIs</td><td style="color:var(--grn)">vLLM, llm-d</td></tr>
-        <tr><td>Model training</td><td style="color:var(--red)">None</td><td style="color:var(--grn)">KF Trainer v2</td></tr>
+        <tr><td>Self-hosted model serving</td><td style="color:var(--red)">Uses 3rd-party APIs</td><td style="color:var(--grn)">vLLM, llm-d (customer-operated)</td></tr>
+        <tr><td>Self-hosted model training</td><td style="color:var(--red)">None</td><td style="color:var(--grn)">KF Trainer v2 (customer-operated)</td></tr>
         <tr><td>Hardware optimization</td><td style="color:var(--red)">None</td><td style="color:var(--grn)">Multi-GPU, RDMA</td></tr>
-        <tr><td>Air-gap infra</td><td style="color:var(--red)">Depends on cloud</td><td style="color:var(--grn)">Full OCP stack</td></tr>
+        <tr><td>Air-gap / sovereign infra</td><td style="color:var(--red)">Depends on cloud provider</td><td style="color:var(--grn)">Full OCP stack (customer-operated)</td></tr>
     </table>
     <p style="font-size:.40em;margin-top:4px"><strong>Opportunity:</strong> If Red Hat builds the governance layer, the value prop becomes "the only platform from model training to agent governance -- all on your infrastructure, all open source."</p>
 </div>
@@ -281,10 +281,10 @@
     <tr><td>Salesforce Agentforce</td><td>Per-conversation</td><td>~$2/conversation</td><td>Salesforce ecosystem</td></tr>
     <tr><td>Microsoft Copilot Studio</td><td>Per-user + credits</td><td>$30/user/mo + credits</td><td>Microsoft 365 / Azure</td></tr>
     <tr><td>IBM watsonx</td><td>Subscription + usage</td><td>~$530/month base</td><td>IBM stack</td></tr>
-    <tr><td><strong>Red Hat AI</strong></td><td>Subscription</td><td>OpenShift + RHOAI subscription</td><td>None (open source)</td></tr>
+    <tr><td><strong>Red Hat AI</strong></td><td>Platform subscription</td><td>OpenShift + RHOAI sub (customer self-hosts)</td><td>None (open source, no managed service)</td></tr>
 </table>
 <p style="font-size:.40em;margin-top:4px"><strong>Lyzr benchmark:</strong> Full KYC pipeline (20+ agents) = $1.02/run. 95% cheaper than human labor. 300% ROI year 1.</p>
-<p style="font-size:.40em"><strong>Implication:</strong> If we add agent governance, our pricing advantage is structural -- customer already pays for infrastructure. Agent governance is incremental value on existing spend, not a new line item.</p>
+<p style="font-size:.40em"><strong>Key distinction:</strong> Red Hat sells a platform subscription -- no managed inference, no hosted agents. Customer operates everything on their own clusters. Lyzr sells a managed agent platform with per-run billing. Different models entirely: Red Hat = "own your AI infra," Lyzr = "rent agent governance."</p>
 </section>
 
 <!-- S10: SWOT -->
